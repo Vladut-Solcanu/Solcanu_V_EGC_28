@@ -5,6 +5,7 @@ namespace Egc;
 
 /// <summary>
 /// Un program shader OpenGL: vertex shader + fragment shader, compilate și legate (link).
+/// Neschimbată față de laboratorul 4.
 /// </summary>
 public sealed class Shader : IDisposable
 {
@@ -65,6 +66,18 @@ public sealed class Shader : IDisposable
     public void SetColor(string name, Color4 value)
     {
         GL.Uniform4(GetLocation(name), value.R, value.G, value.B, value.A);
+    }
+
+    /// <summary>NOU (laboratorul 3): uniformă de tip float (în GLSL: uniform float ...).</summary>
+    public void SetFloat(string name, float value)
+    {
+        GL.Uniform1(GetLocation(name), value);
+    }
+
+    /// <summary>NOU (laboratorul 3): uniformă de tip int (în GLSL: uniform int ...).</summary>
+    public void SetInt(string name, int value)
+    {
+        GL.Uniform1(GetLocation(name), value);
     }
 
     private int GetLocation(string name)
